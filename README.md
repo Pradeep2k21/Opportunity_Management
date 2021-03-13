@@ -15,3 +15,5 @@ Opportunity Management (Objective would be to view previous years Opportunities 
 - Jdbc
 - Angular
 - mySQL
+
+[Screenshots](Au_management_ss.pdf)
