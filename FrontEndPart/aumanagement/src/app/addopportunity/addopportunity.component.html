@@ -1,0 +1,47 @@
+<div class="jumbotron">
+  <div class="container">
+    <button class="btn btn-warning col-sm-2" style="margin-left: 10px;" routerLink="/opportunity/createOpp">Create OpportunitY  </button>
+    <br>
+    <br>
+    <input type="text" style="margin-left: 10px;" class="form-control col-sm-2" placeholder="Search Here" [(ngModel)]="term">
+  </div>
+</div>
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Deleted</strong> Successfull ! ☺.
+  <button routerLink="/home" (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Id</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Description</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Location</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Skills</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">UserId</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">MinExperience</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Demand</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">LastDateOfJoining</th>
+      <th scope="col"style="font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let itr of collection | filter:term">
+        <td style="font-weight: bolder; font-size: medium;">{{itr.id}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.description}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.location}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.skills}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.userId}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.minExperience}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.demand}}</td>
+        <td style="font-weight:500; font-size: medium;font-family: 'Times New Roman', Times, serif;">{{itr.date}}</td>
+        <td><a routerLink="/opportunity/updateOpp/{{itr.id}}"><i class="fa fa-edit" style="font-size:25px; color:blue"></i></a>&nbsp;&nbsp;
+           <i (click)="deleteOpportunity(itr.id)" class="fa fa-trash" style="font-size: 25px;color:red;"></i></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>

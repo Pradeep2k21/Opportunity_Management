@@ -1,0 +1,147 @@
+<!-- <div>
+  <div class="row jumbotron" style="padding: 10px;margin-top: 10px; margin-left: auto;font-family:'Times New Roman', Times, serif;font-weight: bolder;font-size:larger;">
+    Add OpportunitY Details
+    </div>
+</div> -->
+
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert" >
+  <strong>Success!!</strong> Opportunity created successfully!!
+  <button routerLink="/opportunity" (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- <form [formGroup]="createOpportunity" (ngSubmit)="createOppor()">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+  <div class="form-group col-md-10">
+    <div class="form-group">
+      <span class="col-md-6">
+        <label  class="col-sm-3 col-form-label"style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;" >Job Description</label>
+        <input type="text"  placeholder="Enter Description" formControlName="description" required>
+      </span>
+      <span class="col-md-6">
+        <label  class="col-sm-3 col-form-label"style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;"  >Location</label>
+        <input type="text"  placeholder="Enter Location" formControlName="location" required>
+      </span>
+
+    </div>
+    <div  class="form-group">
+      <span class="col-md-6">
+        <label  class="col-sm-3 col-form-label"style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;" >Skills</label>
+        <input type="text" placeholder="Enter Skills required " formControlName="skills" required>
+      </span>
+
+      <span class="col-md-6">
+        <label class="col-sm-3 col-form-label" style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;" >MinExperience</label>
+        <input type="text"  placeholder="Enter minExp" formControlName="minExperience" required>
+      </span>
+    </div>
+
+    <div class="form-group " >
+
+      <span class="col-md-6">
+        <label class="col-sm-3 col-form-label" style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;"  >Demand</label>
+        <input type="text"  placeholder="Enter Demand" formControlName="demand" required>
+      </span>
+      <span class="col-md-6">
+        <label  class="col-sm-3 col-form-label"style=" margin-right:10px;font-weight:bolder; font-size: large;font-family: 'Times New Roman', Times, serif;" >Date</label>
+        <input type="text" placeholder="YYYY-MM-DD " formControlName="date" required>
+      </span>
+
+    </div>
+    <button style="margin-left:30px"type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+</form> -->
+
+<div class="container" style="margin-top:100px">
+  <div class="row">
+      <div class="col-md-8 mx-auto">
+          <div class="card">
+              <div class="card-header">
+                  <h3 style="font-weight:500; font-size:40px;font-family: 'Times New Roman', Times, serif;">Add OpportunitY Details</h3>
+              </div>
+              <div class="card-body">
+<form  [formGroup]="createOpportunity" (ngSubmit)="createOppor()">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">Job Description</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Job Description" formControlName="description" required>
+      <span class="text-danger"
+                                *ngIf="(registerFormControl.description.touched || submitted) && registerFormControl.description.errors?.required">
+                                Job Description is required
+                            </span>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer02">Location </label>
+      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Location" formControlName="location" required>
+      <span class="text-danger"
+                                *ngIf="(registerFormControl.location.touched || submitted) && registerFormControl.location.errors?.required">
+                                location is required
+                            </span>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerUsername">Skills</label>
+      <div class="input-group">
+        <!-- <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+        </div> -->
+        <input type="text" class="form-control is-valid" id="validationServerUsername" formControlName="skills" placeholder="Skills" required>
+        <span class="text-danger"
+                                *ngIf="(registerFormControl.skills.touched || submitted) && registerFormControl.skills.errors?.required">
+                                Skills is required
+                            </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationServer03">minExperience</label>
+      <input type="text" class="form-control is-valid" id="validationServer03" formControlName="minExperience" placeholder="minExperience" required>
+      <span class="text-danger"
+                                *ngIf="(registerFormControl.minExperience.touched || submitted) && registerFormControl.minExperience.errors?.required">
+                                minExperience is required
+                            </span>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer04">Demand</label>
+      <input type="text" class="form-control is-valid" id="validationServer04" formControlName="demand" placeholder="Demand" required>
+      <span class="text-danger"
+                                *ngIf="(registerFormControl.demand.touched || submitted) && registerFormControl.demand.errors?.required">
+                                Demand is required
+                            </span>
+
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer05">Date </label>
+
+    <input type="text"
+    placeholder="Datepicker"
+    class="form-control"
+    formControlName="date"
+    bsDatepicker
+    required>
+     <span class="text-danger" *ngIf="(registerFormControl.date.touched || submitted) && registerFormControl.date.errors?.required">
+      Date is required
+      </span>
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+      <label class="form-check-label" for="invalidCheck3">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div> -->
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
